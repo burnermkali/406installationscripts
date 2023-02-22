@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# check if Bluetooth service is already running
+if systemctl is-active --quiet bluetooth; then
+  echo "Bluetooth service is already running."
+  exit 0
+fi
+
+# start Bluetooth service
+systemctl start bluetooth
+
+# check if Bluetooth service started successfully
+if systemctl is-active --quiet bluetooth; then
+  echo "Bluetooth service started successfully."
+else
+  echo "Failed to start Bluetooth service."
+  exit 1
+fi
